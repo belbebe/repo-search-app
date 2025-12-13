@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		23D1B48E2EEE128A00F125BF /* RepoSearchNetworking in Frameworks */ = {isa = PBXBuildFile; productRef = 23D1B48D2EEE128A00F125BF /* RepoSearchNetworking */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		237016772EE9FDB300B84888 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23D1B48E2EEE128A00F125BF /* RepoSearchNetworking in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = RepoSearch;
 			packageProductDependencies = (
+				23D1B48D2EEE128A00F125BF /* RepoSearchNetworking */,
 			);
 			productName = RepoSearch;
 			productReference = 237016692EE9FDB100B84888 /* RepoSearch.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = 237016602EE9FDB100B84888;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				23D1B48C2EEE128A00F125BF /* XCLocalSwiftPackageReference "../RepoSearchNetworking" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 2370166A2EE9FDB100B84888 /* Products */;
 			projectDirPath = "";
@@ -558,6 +567,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		23D1B48C2EEE128A00F125BF /* XCLocalSwiftPackageReference "../RepoSearchNetworking" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../RepoSearchNetworking;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		23D1B48D2EEE128A00F125BF /* RepoSearchNetworking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RepoSearchNetworking;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 237016612EE9FDB100B84888 /* Project object */;
 }
