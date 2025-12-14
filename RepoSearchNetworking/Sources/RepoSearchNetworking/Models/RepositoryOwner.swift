@@ -7,8 +7,10 @@
 
 import Foundation
 
-public struct RepositoryOwner: Decodable, Identifiable {
+public struct RepositoryOwner: Decodable, Identifiable, Hashable {
     public let id: Int
     public let login: String
+    public let url: String
+    public let htmlUrl: String
     public let avatarUrl: URL?
 }

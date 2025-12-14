@@ -7,7 +7,7 @@
 
 import Foundation
 
-@available(macOS 12.0, *)
+@available(iOS 15.0, macOS 12.0, *)
 public struct URLSessionNetworkClient: NetworkClientInterface {
     private let session: URLSession
     private let decoder: JSONDecoder
