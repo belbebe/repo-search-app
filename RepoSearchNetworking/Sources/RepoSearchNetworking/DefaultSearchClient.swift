@@ -7,7 +7,7 @@
 
 import Foundation
 
-@available(macOS 12.0, *)
+@available(iOS 15.0, macOS 12.0, *)
 public struct DefaultSearchClient: SearchClientInterface {
     private let network: NetworkClientInterface
     

@@ -1,5 +1,5 @@
 //
-//  BorderWithCornerRadius.swift
+//  BorderWithCornerRadiusModifier.swift
 //  RepoSearch
 //
 //  Created by Belcsik Bence on 2025. 12. 10..
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BorderWithCornerRadius: ViewModifier {
+struct BorderWithCornerRadiusModifier: ViewModifier {
     let backGroundColor: Color
     let borderColor: Color
     let cornerRadius: CGFloat
