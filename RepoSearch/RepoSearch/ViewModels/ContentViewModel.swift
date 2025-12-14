@@ -15,16 +15,18 @@ final class ContentViewModel: ObservableObject {
     @Published var isLoading: Bool
     @Published var repositories: [Repository]
     @Published var errorMessage: String?
-    @Published var navigationPath: NavigationPath
+    var navigationHandler: (any NavigationHandlerInterface)?
     
     private let client: SearchClientInterface
     
-    init(client: SearchClientInterface = DefaultSearchClient()) {
+    init(
+        client: SearchClientInterface = DefaultSearchClient()
+    ) {
         self.searchText = ""
         self.isLoading = false
         self.repositories = []
         self.errorMessage = nil
-        self.navigationPath = NavigationPath()
+        self.navigationHandler = nil
         self.client = client
     }
 }
@@ -32,7 +34,7 @@ final class ContentViewModel: ObservableObject {
 // MARK: - Event handling
 extension ContentViewModel {
     func searchButtonPressed() async {
-        guard !searchText.isEmpty else {
+        guard !searchText.isEmpty, let navigationHandler else {
             repositories = []
             return
         }
@@ -42,7 +44,7 @@ extension ContentViewModel {
             let request = SearchRepositoriesRequest(query: searchText)
             let response = try await client.searchRepositories(request)
             repositories = response.items
-            navigationPath.append(repositories)
+            navigationHandler.navigate(to: repositories)
         } catch {
             errorMessage = error.localizedDescription
         }

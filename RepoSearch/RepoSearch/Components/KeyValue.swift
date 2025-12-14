@@ -10,10 +10,12 @@ import SwiftUI
 struct KeyValue: View {
     let key: String
     let value: String
+    let isValueLink: Bool
     
-    init(key: String, value: String) {
+    init(key: String, value: String, isValueLink: Bool = false) {
         self.key = key
         self.value = value
+        self.isValueLink = isValueLink
     }
     
     var body: some View {
@@ -21,8 +23,14 @@ struct KeyValue: View {
             Text(key)
                 .fontWeight(.bold)
             Spacer()
-            Text(value)
-                .multilineTextAlignment(.trailing)
+            if isValueLink {
+                Link(value, destination: URL(string: value)!)
+                    .foregroundStyle(.blue)
+                    .multilineTextAlignment(.trailing)
+            } else {
+                Text(value)
+                    .multilineTextAlignment(.trailing)
+            }
         }
     }
 }

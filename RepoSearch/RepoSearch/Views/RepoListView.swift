@@ -18,17 +18,16 @@ struct RepoListView: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 8) {
-                ForEach(viewModel.repositories) { repository in
-                    RepoListItem(repository: repository)
+                ForEach(viewModel.repositories) { (repository: Repository) in
+                    RepoListItem(repository: repository, onTap: viewModel.repoListItemPressed)
                 }
             }
         }
         .contentMargins(16, for: .scrollContent)
         .navigationTitle("Repos for term: \(viewModel.searchText)")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationDestination(for: Repository.self) { (repository: Repository) in
+            RepoDetailsView(viewModel: RepoDetailsViewModel(repository: repository))
+        }
     }
-}
-
-#Preview {
-    RepoListView(viewModel: RepoListViewModel())
 }

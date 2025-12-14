@@ -9,21 +9,15 @@ import RepoSearchNetworking
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject private var navigationHandler: DefaultNavigationHandler
     @StateObject private var viewModel = ContentViewModel()
     
     var body: some View {
-        NavigationStack(path: $viewModel.navigationPath) {
+        NavigationStack(path: $navigationHandler.path) {
             VStack {
                 TextField("Type here info about the repository...", text: $viewModel.searchText)
                     .padding(8)
-                    .modifier(
-                        BorderWithCornerRadiusModifier(
-                            backGroundColor: Constants.mainBackgroundColor,
-                            borderColor: .gray,
-                            cornerRadius: 4,
-                            borderWidth: 1
-                        )
-                    )
+                    .modifier(BorderWithCornerRadiusModifier.default())
                     .padding(.horizontal, 16)
                     .padding(.bottom, 16)
                 
@@ -61,16 +55,16 @@ struct ContentView: View {
             .navigationTitle("Repo Search")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: [Repository].self) { (repos: [Repository]) in
-                RepoListView(viewModel: RepoListViewModel(searchText: viewModel.searchText, repositories: repos))
+                RepoListView(viewModel: RepoListViewModel(
+                    searchText: viewModel.searchText,
+                    repositories: repos,
+                    navigationHandler: navigationHandler
+                ))
+            }
+            .onAppear {
+                viewModel.navigationHandler = navigationHandler
             }
         }
-    }
-}
-
-// MARK: - Constants
-extension ContentView {
-    enum Constants {
-        static let mainBackgroundColor = Color("Main")
     }
 }
 
