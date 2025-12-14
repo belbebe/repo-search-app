@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct RepoSearchApp: App {
+    @StateObject private var navigationHandler = DefaultNavigationHandler()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(navigationHandler)
         }
     }
 }

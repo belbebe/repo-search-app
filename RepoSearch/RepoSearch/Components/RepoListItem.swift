@@ -10,9 +10,11 @@ import SwiftUI
 
 struct RepoListItem: View {
     private let repository: Repository
+    private let onTap: (_ repo: Repository) -> Void
     
-    init(repository: Repository) {
+    init(repository: Repository, onTap: @escaping (_ repo: Repository) -> Void) {
         self.repository = repository
+        self.onTap = onTap
     }
     
     var body: some View {
@@ -27,7 +29,7 @@ struct RepoListItem: View {
                 }
                 KeyValue(key: "Number of stars:", value: "\(repository.stargazersCount)")
                 if let updatedAtDate = repository.updatedAtDate {
-                    KeyValue(key: "Updated at:", value: "\(updatedAtDate.formatted(date: .abbreviated, time: .standard))")
+                    KeyValue(key: "Last updated at:", value: "\(updatedAtDate.formatted(date: .abbreviated, time: .standard))")
                 }
             }
             
@@ -36,14 +38,10 @@ struct RepoListItem: View {
                 .scaleEffect(1.5)
                 .padding(.horizontal, 4)
         }
+        .onTapGesture {
+            onTap(repository)
+        }
         .padding(8)
-        .modifier(
-            BorderWithCornerRadiusModifier(
-                backGroundColor: Color("Main"),
-                borderColor: .gray,
-                cornerRadius: 2,
-                borderWidth: 2
-            )
-        )
+        .modifier(BorderWithCornerRadiusModifier.defaultThick())
     }
 }

@@ -29,3 +29,24 @@ struct BorderWithCornerRadiusModifier: ViewModifier {
             .cornerRadius(cornerRadius + borderWidth)
     }
 }
+
+// MARK: - Styles
+extension BorderWithCornerRadiusModifier {
+    static func `default`() -> Self {
+        Self(
+            backGroundColor: Color("Main"),
+            borderColor: .gray,
+            cornerRadius: 4,
+            borderWidth: 1
+        )
+    }
+    
+    static func defaultThick() -> Self {
+        Self(
+            backGroundColor: Color("Main"),
+            borderColor: .gray,
+            cornerRadius: 2,
+            borderWidth: 2
+        )
+    }
+}
