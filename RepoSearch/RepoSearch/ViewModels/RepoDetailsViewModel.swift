@@ -9,7 +9,12 @@ import RepoSearchNetworking
 import SwiftUI
 
 @MainActor
-final class RepoDetailsViewModel: ObservableObject {
+protocol RepoDetailsViewModelInterface {
+    var repository: Repository { get }
+}
+
+@MainActor
+final class RepoDetailsViewModel: ObservableObject, RepoDetailsViewModelInterface {
     @Published var repository: Repository
     
     init(repository: Repository) {
