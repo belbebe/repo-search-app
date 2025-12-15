@@ -9,8 +9,16 @@ import RepoSearchNetworking
 import SwiftUI
 
 @MainActor
-final class RepoListViewModel: ObservableObject {
-    // TODO: convert properties to let after implementing DI
+protocol RepoListViewModelInterface {
+    var searchText: String { get }
+    var repositories: [Repository] { get }
+    var navigationHandler: any NavigationHandlerInterface { get }
+    
+    func repoListItemPressed(with repo: Repository)
+}
+
+@MainActor
+final class RepoListViewModel: ObservableObject, RepoListViewModelInterface {
     @Published var searchText: String
     @Published var repositories: [Repository]
     var navigationHandler: any NavigationHandlerInterface

@@ -9,6 +9,7 @@ import RepoSearchNetworking
 import SwiftUI
 
 struct RepoListView: View {
+    @EnvironmentObject private var diContainer: DIContainer
     @StateObject private var viewModel: RepoListViewModel
     
     init(viewModel: RepoListViewModel) {
@@ -27,7 +28,7 @@ struct RepoListView: View {
         .navigationTitle("Repos for term: \(viewModel.searchText)")
         .navigationBarTitleDisplayMode(.inline)
         .navigationDestination(for: Repository.self) { (repository: Repository) in
-            RepoDetailsView(viewModel: RepoDetailsViewModel(repository: repository))
+            RepoDetailsView(viewModel: diContainer.swinjectContainer.resolve((any RepoDetailsViewModelInterface).self, argument: repository)! as! RepoDetailsViewModel)
         }
     }
 }

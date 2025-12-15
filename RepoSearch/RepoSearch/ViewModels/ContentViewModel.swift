@@ -10,7 +10,18 @@ import RepoSearchNetworking
 import SwiftUI
 
 @MainActor
-final class ContentViewModel: ObservableObject {
+protocol ContentViewModelInterface {
+    var searchText: String { get set }
+    var isLoading: Bool { get set }
+    var repositories: [Repository] { get set }
+    var errorMessage: String? { get set }
+    var navigationHandler: (any NavigationHandlerInterface)? { get set }
+    
+    func searchButtonPressed() async
+}
+
+@MainActor
+final class ContentViewModel: ObservableObject, ContentViewModelInterface {
     @Published var searchText: String
     @Published var isLoading: Bool
     @Published var repositories: [Repository]

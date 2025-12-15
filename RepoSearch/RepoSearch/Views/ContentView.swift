@@ -7,9 +7,11 @@
 
 import RepoSearchNetworking
 import SwiftUI
+import Swinject
 
 struct ContentView: View {
     @EnvironmentObject private var navigationHandler: DefaultNavigationHandler
+    @EnvironmentObject private var diContainer: DIContainer
     @StateObject private var viewModel = ContentViewModel()
     
     var body: some View {
@@ -55,19 +57,14 @@ struct ContentView: View {
             .navigationTitle("Repo Search")
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(for: [Repository].self) { (repos: [Repository]) in
-                RepoListView(viewModel: RepoListViewModel(
-                    searchText: viewModel.searchText,
-                    repositories: repos,
-                    navigationHandler: navigationHandler
-                ))
+                RepoListView(viewModel: diContainer.swinjectContainer.resolve(
+                    (any RepoListViewModelInterface).self,
+                    arguments: viewModel.searchText, viewModel.repositories, navigationHandler as (any NavigationHandlerInterface)
+                )! as! RepoListViewModel)
             }
             .onAppear {
                 viewModel.navigationHandler = navigationHandler
             }
         }
     }
-}
-
-#Preview {
-    ContentView()
 }
