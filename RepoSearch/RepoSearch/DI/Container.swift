@@ -28,7 +28,8 @@ private extension DIContainer {
         }
         .inObjectScope(.transient)
         
-        swinjectContainer.register((any RepoListViewModelInterface).self) { (resolver: Resolver, searchText: String, repos: [Repository], navigationHandler: NavigationHandlerInterface) in
+        swinjectContainer.register((any RepoListViewModelInterface).self) {
+            (resolver: Resolver, searchText: String, repos: [Repository], navigationHandler: NavigationHandlerInterface) in
             RepoListViewModel(
                 searchText: searchText,
                 repositories: repos,
