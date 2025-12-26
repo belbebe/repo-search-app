@@ -13,4 +13,18 @@ public struct RepositoryOwner: Decodable, Identifiable, Hashable {
     public let url: String
     public let htmlUrl: String
     public let avatarUrl: URL?
+    
+    public init(
+        id: Int,
+        login: String,
+        url: String,
+        htmlUrl: String,
+        avatarUrl: URL?
+    ) {
+        self.id = id
+        self.login = login
+        self.url = url
+        self.htmlUrl = htmlUrl
+        self.avatarUrl = avatarUrl
+    }
 }

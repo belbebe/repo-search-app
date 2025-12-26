@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-protocol NavigationHandlerInterface: ObservableObject {
+public protocol NavigationHandlerInterface: ObservableObject {
     var path: NavigationPath { get }
     
     func navigate(to screen: any Hashable)
