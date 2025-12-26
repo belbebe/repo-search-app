@@ -11,4 +11,10 @@ public struct SearchRepositoriesResponse: Decodable {
     public let totalCount: Int
     public let incompleteResults: Bool
     public let items: [Repository]
+    
+    public init(totalCount: Int, incompleteResults: Bool, items: [Repository]) {
+        self.totalCount = totalCount
+        self.incompleteResults = incompleteResults
+        self.items = items
+    }
 }

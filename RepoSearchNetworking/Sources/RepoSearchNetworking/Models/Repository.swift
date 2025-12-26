@@ -26,4 +26,30 @@ public struct Repository: Decodable, Identifiable, Hashable {
     public var updatedAtDate: Date? {
         return ISO8601DateFormatter().date(from: updatedAt)
     }
+    
+    public init(
+        id: Int,
+        name: String,
+        fullName: String,
+        description: String?,
+        htmlUrl: URL,
+        stargazersCount: Int,
+        forksCount: Int,
+        language: String?,
+        owner: RepositoryOwner,
+        createdAt: String,
+        updatedAt: String
+    ) {
+        self.id = id
+        self.name = name
+        self.fullName = fullName
+        self.description = description
+        self.htmlUrl = htmlUrl
+        self.stargazersCount = stargazersCount
+        self.forksCount = forksCount
+        self.language = language
+        self.owner = owner
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+    }
 }
