@@ -45,11 +45,6 @@
 			path = RepoSearchTests;
 			sourceTree = "<group>";
 		};
-		237016832EE9FDB300B84888 /* RepoSearchUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = RepoSearchUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +79,6 @@
 			children = (
 				2370166B2EE9FDB100B84888 /* RepoSearch */,
 				237016792EE9FDB300B84888 /* RepoSearchTests */,
-				237016832EE9FDB300B84888 /* RepoSearchUITests */,
 				2370166A2EE9FDB100B84888 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -161,9 +155,6 @@
 			);
 			dependencies = (
 				237016822EE9FDB300B84888 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				237016832EE9FDB300B84888 /* RepoSearchUITests */,
 			);
 			name = RepoSearchUITests;
 			packageProductDependencies = (
